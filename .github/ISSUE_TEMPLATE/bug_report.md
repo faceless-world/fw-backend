@@ -7,7 +7,7 @@ assignees: Beloborod
 
 ---
 
-**Describe the bug**
+**Bug description**
 A clear and concise description of what the bug is.
 
 **To Reproduce**
