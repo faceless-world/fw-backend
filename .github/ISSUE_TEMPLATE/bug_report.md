@@ -1,8 +1,8 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: "[B]"
-labels: bug, wontfix
+title: "[B] "
+labels: bug, enhancement, wontfix
 assignees: Beloborod
 
 ---
