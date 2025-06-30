@@ -1,16 +1,26 @@
+"""
+Main file to start Faceless World backend
+"""
+
 import importlib
 import os
 import threading
-
+from typing import List
 import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.routing import APIRoute, APIRouter
-
 from modules.api.auth import schedule_key_rotation
 
 
-def import_routers_from_directory(directory: str = "routes"):
+def import_routers_from_directory(directory: str = "routes") -> APIRouter:
+    """
+    Import all routes from modules
+    :param directory: Directory with routes
+    :type directory: str
+    :return: Api router
+    :rtype: APIRouter
+    """
     main_router = APIRouter()
 
     for filename in os.listdir(directory):
@@ -38,8 +48,12 @@ if __name__ == "__main__":
 
 
     @app.get("/")
-    def get_routes():
-        """Возвращает список всех доступных путей в приложении FastAPI."""
+    def get_routes() -> List[dict]:
+        """
+        Return all routes from FastApi
+        :return: All routes from FastApi
+        :rtype: List[dict]
+        """
         routes_list = []
         for route in app.routes:
             if isinstance(route, APIRoute):
