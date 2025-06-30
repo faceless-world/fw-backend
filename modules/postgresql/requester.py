@@ -2,9 +2,9 @@
 Module with class to make requests to postgresql database
 """
 
+import psycopg2
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 from configs.postgresql.credentials import config as pg_creds
-import psycopg2
 
 
 class PostgresRequester:
@@ -18,8 +18,7 @@ class PostgresRequester:
     def __del__(self):
         if getattr(self, 'connect', None) is not None:
             self.connect.close()
-    
-    
+
     def _update_cursor(self, db_name: str) -> None:
         """
         Update cursor of current connection

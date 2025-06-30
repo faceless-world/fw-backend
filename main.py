@@ -65,8 +65,9 @@ if __name__ == "__main__":
         return routes_list
 
     # Start key rotation in a separate thread
-    rotation_interval_seconds = 3600  # Rotate key every hour (adjust as needed)
-    rotation_thread = threading.Thread(target=schedule_key_rotation, args=(rotation_interval_seconds,))
+    ROTATION_INTERVAL_SECONDS = 3600  # Rotate key every hour (adjust as needed)
+    rotation_thread = threading.Thread(target=schedule_key_rotation,
+                                       args=(ROTATION_INTERVAL_SECONDS,))
     rotation_thread.daemon = True
     rotation_thread.start()
 
